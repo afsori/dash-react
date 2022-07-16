@@ -1,10 +1,8 @@
-import React from 'react'
-import ProductList from '../../organizm/ProductList'
+import React from "react";
+import ProductList from "../../organizm/ProductList";
 
 function Home() {
-  return (
-   <ProductList></ProductList>
-  )
+	return <ProductList></ProductList>;
 }
 
-export default Home
+export default Home;
