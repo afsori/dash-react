@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Header() {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,9 +26,9 @@ function Header() {
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="/">
-								Link
-							</a>
+							<Link className="nav-link" to="/contact">
+								Contact
+							</Link>
 						</li>
 						<li className="nav-item dropdown">
 							<a

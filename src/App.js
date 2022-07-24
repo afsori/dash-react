@@ -1,20 +1,19 @@
-import "./App.css";
 import Home from "./pages/Home/index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./organizm/Header";
 // import ProductList from './organizm/ProductList';
 import ProductDetail from "./organizm/ProductDetail";
+import Contact from "./pages/Contact";
 
 function App() {
 	return (
-		<div className="App container">
+		<div className="App">
 			{/* <ProductList></ProductList> */}
 			{/* <ProductDetail></ProductDetail> */}
 			<Router>
-				<Header></Header>
 				<Routes>
 					<Route path="/" element={<Home />}></Route>
 					<Route path="/product/:id" element={<ProductDetail />}></Route>
+					<Route path="/contact" element={<Contact />}></Route>
 				</Routes>
 			</Router>
 		</div>

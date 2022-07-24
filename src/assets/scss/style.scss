@@ -4,7 +4,8 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-
+//  google font
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap");
 // scss-docs-start import-stack
 // Configuration
 @import "functions";
@@ -43,6 +44,8 @@
 @import "carousel";
 @import "spinners";
 @import "offcanvas";
+@import "sidebar";
+@import "home";
 
 // Helpers
 @import "helpers";
@@ -50,3 +53,15 @@
 // Utilities
 @import "utilities/api";
 // scss-docs-end import-stack
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins0", sans-serif;
+}
+body {
+	position: relative;
+	min-height: 100vh;
+	width: 100%;
+}
