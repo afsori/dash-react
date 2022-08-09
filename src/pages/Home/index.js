@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import ProductList from "../../organizm/ProductList";
 import Header from "../../organizm/Header";
 import Sidebar from "../../organizm/Sidebar";
@@ -13,6 +14,7 @@ function Home() {
 			{/* <ProductList></ProductList>; */}
 			<div className="home_content">
 				<div className="text"> Home Content</div>
+				<Outlet/>
 			</div>
 		</>
 	);
