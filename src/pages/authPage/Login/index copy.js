@@ -2,33 +2,23 @@ import React, {useState} from 'react';
 import { useDispatch } from "react-redux";
 import HeaderImg from '../../../assets/img/Header-9.png'
 import { login } from '../../../redux/actions/authActions';
-
-// Library
 import { useNavigate } from "react-router-dom";
-import { useFormik } from 'formik';
-import { basicSchema } from './schemaValidation';
-import { showStatus } from '../../../app-setting/AlertCustom';
-
 function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const onSubmit = async (values, action) =>{
-        await new Promise((resolve) => setTimeout(resolve, 3000))
-     
+    const [isEmail, setEmail] = useState('')
+    const [isPassword, setPassword] = useState('')
+
+    const handleSubmit = () =>{
         const dataLogin = {
-            email: values.email,
-            password: values.password
+            email: isEmail,
+            password: isPassword
         }
         dispatch(login(dataLogin))
          .then(result =>{
             console.log('result login', result)
-            navigate("/")
-            action.resetForm()
-            showStatus(
-                'success',
-                'login success',
-            )
+            navigate("/home")
          })
          .catch(err =>{
             console.log('error login', err)
@@ -36,20 +26,11 @@ function Login() {
 
     }
 
-    const {values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit} = useFormik({
-        initialValues:{
-            email:'',
-            password: ''
-        },
-        validationSchema: basicSchema,
-        onSubmit
-    })
-
   return (
     <section className="sign-in mx-auto">
     <div className="row">
         <div className="col-xxl-5 col-lg-6 my-auto py-lg-0 pt-lg-5 pb-lg-5 pt-3 pb-4 px-0">
-            <form action="" onSubmit={handleSubmit}>
+            <form action="">
                 <div className="container mx-auto">
                     <div className="pb-50">
                         <a className="navbar-brand" href="../index.html">
@@ -76,29 +57,18 @@ function Login() {
                     <div className="pt-5">
                         <label htmlFor="email" className="form-label text-lg fw-medium color-palette-1 mb-10">Email
                             Address</label>
-                        <input value={values.email} onChange={handleChange} onBlur={handleBlur} type="email" 
-                        className={`${errors.email && touched.email ? 'is-invalid' : ''} form-control rounded-pill text-lg`} id="email" name="email"
-                            aria-describedby="email" placeholder="Enter your email address"
-                            />
-                        {errors.email && touched.email && <p className='invalid-feedback'>{errors.email}</p>}
+                        <input onChange={(e)=>setEmail(e.target.value)} type="email" className="form-control rounded-pill text-lg" id="email" name="email"
+                            aria-describedby="email" placeholder="Enter your email address"/>
                     </div>
                     <div className="pt-3">
                         <label htmlFor="password"
                             className="form-label text-lg fw-medium color-palette-1 mb-10">Password</label>
-                        <input value={values.password} onChange={handleChange} onBlur={handleBlur} type="password" 
-                        className={`${errors.password && touched.password ? 'is-invalid' : ''} form-control rounded-pill text-lg`} id="password"
+                        <input onChange={(e)=>setPassword(e.target.value)} type="password" className="form-control rounded-pill text-lg" id="password"
                             name="password" aria-describedby="password" placeholder="Your password"/>
-                        {errors.password && touched.password && <p className='invalid-feedback'>{errors.password}</p>}
                     </div>
-                    {/* <div className="pt-3">
-                        <label htmlFor="file"
-                            className="form-label text-lg fw-medium color-palette-1 mb-10">Password</label>
-                        <input onChange={handleChange} type="file" className="form-control rounded-pill text-lg" id="file"
-                            name="file" aria-describedby="file" placeholder="Your password"/>
-                    </div> */}
                     <div className="button-group d-flex flex-column mx-auto pt-5">
-                        <button disabled={isSubmitting} type='submit' className="btn btn-sign-in fw-medium text-lg text-white rounded-pill mb-16" >Continue to Sign In</button>
-                        {/* <a type='submit' className="btn btn-sign-in fw-medium text-lg text-white rounded-pill mb-16" role="button">Continue to Sign In</a> */}
+                        <a className="btn btn-sign-in fw-medium text-lg text-white rounded-pill mb-16"
+                            onClick={handleSubmit} role="button">Continue to Sign In</a>
                         <a className="btn btn-sign-up fw-medium text-lg color-palette-1 rounded-pill mt-3"
                             href="../src/sign-up.html" role="button">Sign
                             Up</a>

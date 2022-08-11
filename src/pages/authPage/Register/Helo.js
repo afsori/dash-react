@@ -5,7 +5,7 @@ function Helo() {
   return (
     <div>Helo
 
-      <Link to="/auth/parts">to Parts</Link>
+      <Link to="parts">to Parts</Link>
     </div>
   )
 }

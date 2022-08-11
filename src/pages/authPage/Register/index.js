@@ -9,13 +9,13 @@ function Register() {
   return (
     <div>
       Register
-      <Link to="/contact">contact</Link>
-  		    <Routes>
+      <Link to="/auth/login">login</Link>
+  		    {/* <Routes>
             <Route path='/auth'>
               <Route path="parts" element={<Parts/>}></Route>
               <Route path="helo" element={<Helo/>}></Route>
             </Route>
-          </Routes>
+          </Routes> */}
     </div>
   )
 }

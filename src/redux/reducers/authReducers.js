@@ -13,7 +13,7 @@ switch(type) {
     case actionTypes.LOGIN_SUCCESS :
     return {
       ...state,
-      isLogin:true,
+      userLogin:true,
       userData: payload.data
     }
 

@@ -4,7 +4,7 @@ import { Routes, Route, Link } from "react-router-dom";
 function Parts() {
   return (
     <div>Parts
-      <Link to="/auth/helo">to hello</Link>
+      <Link to="helo">to hello</Link>
     </div>
   )
 }
