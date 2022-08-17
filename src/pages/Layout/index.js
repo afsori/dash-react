@@ -1,8 +1,17 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import Sidebar from '../../organizm/Sidebar'
 
-function Layout({children}) {
+function Layout(props) {
+  console.log('props', props)
   return (
-    <div>{children}</div>
+    <>
+    <Sidebar></Sidebar>
+    <div className="home_content">
+      <div className="text">{props.children}</div>
+      {/* <Outlet/> */}
+    </div>
+  </>
   )
 }
 

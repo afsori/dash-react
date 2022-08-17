@@ -18,9 +18,11 @@
 }
 
 .sign-in input[type="password"],
-.sign-in input[type="email"]{
+.sign-in input[type="email"],
+.sign-in input[type="text"],
+.sign-in input[type="tel"]{
     border: 1px solid #0C145A;
-    padding: 0.75rem 1.625rem;
+    padding: 0.5rem 1rem;
     color: #0C145A;
 }
 

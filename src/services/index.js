@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const baseUrl = ''
+const baseUrl2  = ''
 
 // configuration Services
 const GetAll = (path) =>{
@@ -46,6 +47,20 @@ const Post = (path, data) =>{
   return promise;
 }
 
+const Post2 = (path, data) => {
+  const promise = new Promise((resolve, reject) =>{
+    axios.post(`${baseUrl2}/${path}`, data)
+      .then(result => {
+        resolve(result)
+      })
+      .catch(err =>{
+        reject(err)
+      })
+  })
+
+  return promise;
+}
+
 const Update = (path, data, id) =>{
   const promise = new Promise((resolve, reject) =>{
       axios.put(`${baseUrl}/${path}/${id}`, data)
@@ -65,13 +80,15 @@ const GetByID = (id) => GetByID('by_id', id)
 const PostData = (data) => Post('post_data', data)
 const UpdateData = (data, id) => Update('updat_data', data, id);
 const Login = (data) => Post('agents/login', data);
+const Register = (data) => Post2('register/v2', data)
 
 const API = {
   GetAllData,
   GetByID,
   PostData, 
   UpdateData,
-  Login
+  Login,
+  Register
 }
 
 export default API;

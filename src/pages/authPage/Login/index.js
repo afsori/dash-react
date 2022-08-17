@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import { useDispatch } from "react-redux";
 import HeaderImg from '../../../assets/img/Header-9.png'
+
+// Redux
 import { login } from '../../../redux/actions/authActions';
 
 // Library
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import { basicSchema } from './schemaValidation';
 import { showStatus } from '../../../app-setting/AlertCustom';
@@ -14,7 +16,7 @@ function Login() {
     const navigate = useNavigate();
 
     const onSubmit = async (values, action) =>{
-        await new Promise((resolve) => setTimeout(resolve, 3000))
+        // await new Promise((resolve) => setTimeout(resolve, 3000))
      
         const dataLogin = {
             email: values.email,
@@ -22,6 +24,8 @@ function Login() {
         }
         dispatch(login(dataLogin))
          .then(result =>{
+            localStorage.setItem('userData', JSON.stringify(result.data.results))
+            localStorage.setItem('token', 'ini token')
             console.log('result login', result)
             navigate("/")
             action.resetForm()
@@ -31,7 +35,11 @@ function Login() {
             )
          })
          .catch(err =>{
-            console.log('error login', err)
+            showStatus(
+                'error',
+                err.response.data.errors[0].message,
+            )
+            console.log('error login', err.message, err.response.data)
          })
 
     }
@@ -98,10 +106,7 @@ function Login() {
                     </div> */}
                     <div className="button-group d-flex flex-column mx-auto pt-5">
                         <button disabled={isSubmitting} type='submit' className="btn btn-sign-in fw-medium text-lg text-white rounded-pill mb-16" >Continue to Sign In</button>
-                        {/* <a type='submit' className="btn btn-sign-in fw-medium text-lg text-white rounded-pill mb-16" role="button">Continue to Sign In</a> */}
-                        <a className="btn btn-sign-up fw-medium text-lg color-palette-1 rounded-pill mt-3"
-                            href="../src/sign-up.html" role="button">Sign
-                            Up</a>
+                        <Link to="/auth/register" className="btn btn-sign-up fw-medium text-lg color-palette-1 rounded-pill mt-3" role="button">Sign Up</Link>
                     </div>
                 </div>
             </form>
@@ -115,7 +120,7 @@ function Login() {
                 sejati</p>
         </div>
     </div>
-</section>
+    </section>
   )
 }
 

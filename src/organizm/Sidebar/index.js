@@ -1,4 +1,5 @@
 import React from "react";
+import { Link} from "react-router-dom";
 
 function Sidebar() {
 
@@ -45,10 +46,10 @@ function Sidebar() {
 					<span className="tooltip_menu">User</span>
 				</li>
 				<li>
-					<a href="/">
+					<Link to="/contact">
 						<i className="bx bx-chat"></i>
 						<span className="links_name">Messages</span>
-					</a>
+					</Link>
 					<span className="tooltip_menu">Messages</span>
 				</li>
 				<li>

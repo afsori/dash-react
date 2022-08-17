@@ -12,6 +12,8 @@ import Layout from "./pages/Layout";
 import Register from "./pages/authPage/Register";
 import Parts from "./pages/authPage/Register/Parts";
 import Helo from "./pages/authPage/Register/Helo";
+import { routes } from "./app-setting/routing";
+import ProtectedRoutes from "./app-setting/ProtectedRoutes";
 
 function App(props) {
 	const {isLogin} = props;
@@ -21,16 +23,19 @@ function App(props) {
 		<div className="App">
 			<Router>
 				<Routes>
-					  {/* <Route path="parts" element={<Parts/>}></Route>
-              <Route path="helo" element={<Helo/>}></Route> */}
-					<Route path="/auth" element={<AuthPageRoute />}>
-						<Route path="login" element={<Login />} />
-						<Route path="register" element={<Register/>} />
-					</Route>
-					<Route path="/" element={<Home />}>
-						<Route path="product/:id" element={<ProductDetail />}></Route>
-						<Route path="contact" element={<Contact />}></Route>
-					</Route>
+					<Route path="auth/*" element={<AuthPageRoute />}></Route>
+					
+					{/* <Route path="/" element={<Home/>}></Route> */}
+					{routes.map((item, index) =>{
+						let layout = item.isLayout ? <Layout>{item.component}</Layout> : item.component
+						return <Route path={item.path} element={<ProtectedRoutes>{layout}</ProtectedRoutes>}/>
+					})}
+
+					{/* <Route path="/" element={<Layout />}>
+						{routes.map((item, index) => {
+							return <Route index={item.index} path={item.path} element={item.component} key={index}></Route>
+						})}
+					</Route> */}
 				</Routes>
 			</Router>
 		</div>

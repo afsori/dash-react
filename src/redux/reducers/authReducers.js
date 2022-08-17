@@ -7,7 +7,7 @@ const initialState = {
 
 const authReducer = (state = initialState, action) =>{
 const {type, payload} = action;
-console.log('payload', payload)
+// console.log('payload', payload)
 
 switch(type) {
     case actionTypes.LOGIN_SUCCESS :
@@ -16,6 +16,12 @@ switch(type) {
       userLogin:true,
       userData: payload.data
     }
+
+    case actionTypes.REGISTER_SUCCESS :
+      return {
+        ...state,
+        registerData :payload.data
+      }
 
     default:
       return state;
