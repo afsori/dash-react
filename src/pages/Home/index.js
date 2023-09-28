@@ -6,15 +6,25 @@ import Sidebar from "../../organizm/Sidebar";
 
 import '../../assets/scss/home.scss'
 
+import { useStoreZustand } from "../../zustand";
+
 function Home() {
+	const {count, increaseCount, resetCount} = useStoreZustand();
+
+	const Sum = (a, b) => {
+		return a + b;
+	}
 	return (
 		<>
 			{/* <Header></Header> */}
-			<Sidebar></Sidebar>
+			{/* <Sidebar></Sidebar> */}
 			{/* <ProductList></ProductList>; */}
-			<div className="home_content">
+			<div className="home_content" data-testid="home_content">
 				<div className="text"> Home Content</div>
-				<Outlet/>
+				<p>{count}</p>
+				<button onClick={increaseCount}>Klik Disini</button>
+				<button onClick={resetCount}>Reset Count</button>
+				{/* <Outlet/> */}
 			</div>
 		</>
 	);

@@ -17,7 +17,7 @@ function Login() {
 
     const onSubmit = async (values, action) =>{
         // await new Promise((resolve) => setTimeout(resolve, 3000))
-     
+        localStorage.setItem('token', 'ini token')
         const dataLogin = {
             email: values.email,
             password: values.password

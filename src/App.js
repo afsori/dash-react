@@ -28,7 +28,7 @@ function App(props) {
 					{/* <Route path="/" element={<Home/>}></Route> */}
 					{routes.map((item, index) =>{
 						let layout = item.isLayout ? <Layout>{item.component}</Layout> : item.component
-						return <Route path={item.path} element={<ProtectedRoutes>{layout}</ProtectedRoutes>}/>
+						return <Route key={index} path={item.path} element={<ProtectedRoutes>{layout}</ProtectedRoutes>}/>
 					})}
 
 					{/* <Route path="/" element={<Layout />}>

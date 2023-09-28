@@ -12,10 +12,10 @@ const Toast = Swal.mixin({
   }
 })
 
-Toast.fire({
-  icon: 'success',
-  title: 'Signed in successfully'
-})
+// export const toastLogin = Toast.fire({
+//   icon: 'success',
+//   title: 'Signed in successfully'
+// })
 
 export const showStatus = (
   type = '',
